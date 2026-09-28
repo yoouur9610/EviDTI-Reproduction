@@ -1,0 +1,5 @@
+SOLVER:
+  BATCH_SIZE: 32
+  MAX_EPOCH: 100
+  LR: 3.0e-4
+  SEED: 1

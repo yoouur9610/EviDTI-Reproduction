@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -N DB_stab_run1
+#PBS -l select=1:ncpus=4:ngpus=1:mem=64gb
+#PBS -l walltime=7:00:00
+#PBS -j oe
+#PBS -o out_stab_run1.txt
+
+module purge
+module load miniforge3
+module load cuda
+
+conda activate evidti
+
+cd $PBS_O_WORKDIR
+
+nvidia-smi
+
+python main_drugbank_hpc.py --cfg configs/drugbank_seed6_e100.yaml --data drugbank --split random
+
+echo "Job completed at" $(date)
